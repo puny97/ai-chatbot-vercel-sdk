@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+// @ts-expect-error Next.js loads this global stylesheet as a side effect.
 import "./globals.css";
 import StyledComponentsRegistry from "@/src/utils/SCRegistery";
+import { PoppinsFont } from "@/src/statics/fonts";
 
 export const metadata: Metadata = {
-  title: "Next Styled TS",
-  description: "NextJs with Styled Components and TypeScript",
+  title: "Open Router chatbot",
+  description:
+    "Open Router chatbot built with Next.js, TypeScript, and Styled Components.",
 };
 
 export default function RootLayout({
@@ -15,7 +18,9 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <div id="chatbot-root" className={PoppinsFont.className}>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </div>
       </body>
     </html>
   );
