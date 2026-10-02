@@ -5,6 +5,7 @@ import GetStarted from "./GetStarted";
 import { Colors } from "@/src/statics/colors";
 import useChat from "@/src/hooks/useChat";
 import ChatInput from "../../common/input/ChatInput";
+import ChatHolder from "../../common/chat/ChatHolder";
 
 const ChatPageEl = styled(Row)`
   position: relative;
@@ -27,9 +28,9 @@ export default function ChatPage() {
   } = useChat();
 
   const canSend = !isLoading && typeof input === "string" && input.length > 0;
-
   return (
     <ChatPageEl>
+      <ChatHolder messages={messages} />
       <GetStarted active={stage === "GET_STARTED"} setPrompt={setInput} />
       <ChatInput
         handleInputChange={handleInputChange}

@@ -24,7 +24,7 @@ const HolderEl = styled.div<{ $chatting: boolean }>`
   display: flex;
   align-items: center;
   background-color: ${Colors.Background};
-  width: ${(p) => (p.$chatting ? "calc(100svw - 40px" : "70%")};
+  width: ${(p) => (p.$chatting ? "calc(100svw - 40px)" : "70%")};
   margin: 0 auto;
   border-radius: 10px;
   padding: 10px 0;
