@@ -6,6 +6,7 @@ import { Colors } from "@/src/statics/colors";
 import useChat from "@/src/hooks/useChat";
 import ChatInput from "../../common/input/ChatInput";
 import ChatHolder from "../../common/chat/ChatHolder";
+import NewChatBtn from "../../common/chat/NewChatButton";
 
 const ChatPageEl = styled(Row)`
   position: relative;
@@ -25,11 +26,13 @@ export default function ChatPage() {
     handleInputChange,
     messages,
     input,
+    reset,
   } = useChat();
 
   const canSend = !isLoading && typeof input === "string" && input.length > 0;
   return (
     <ChatPageEl>
+      {stage === "CHAT" && <NewChatBtn onClick={reset}>New Chat</NewChatBtn>}
       <ChatHolder messages={messages} />
       <GetStarted active={stage === "GET_STARTED"} setPrompt={setInput} />
       <ChatInput
